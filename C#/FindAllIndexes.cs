@@ -9,4 +9,3 @@ while ((index = message.IndexOf(searchStr, index)) != -1)
     indexes.add(index);
     index++;
 }
-}
