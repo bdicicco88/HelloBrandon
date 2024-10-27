@@ -5,7 +5,6 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 --Check if Table is Already Created
 IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Drivers]') AND type in (N'U'))
 BEGIN
-	-- Table does not exsits so lets Create it!
 	-- Create Drivers Table
 	CREATE TABLE Drivers (
 		DriverID INT PRIMARY KEY IDENTITY(1,1),           -- Unique identifier for each driver
@@ -15,7 +14,7 @@ BEGIN
 		Country NVARCHAR(50) NOT NULL,                    -- Driver'scountry
 		Active BIT DEFAULT 1                              -- Driver status: active or inactive
 	);
-END;
+END
 
 -- Insert Some Test Data
 INSERT INTO dbo.Drivers 
