@@ -32,17 +32,17 @@ DECLARE
 
 -- Loop Through Table and Delete when Processed
 WHILE EXISTS (SELECT 1 FROM #EmployeeList)
-    BEGIN
-        SELECT TOP 1 @memberID=MemberID, @memberName=MemberName
-        FROM #EmployeeList;
+BEGIN
+    SELECT TOP 1 @memberID=MemberID, @memberName=MemberName
+    FROM #EmployeeList;
 
-		SELECT @memberName + ' has a case of the Mondays';
+	SELECT @memberName + ' has a case of the Mondays';
           
-        -- Delete From Table
-        DELETE FROM #EmployeeList
-        WHERE MemberID = @memberID
-        AND memberName = @memberName;
-    END;
+    -- Delete From Table
+    DELETE FROM #EmployeeList
+    WHERE MemberID = @memberID
+    AND memberName = @memberName;
+END;
 
 -- Clean Up Temp Table;
 DROP TABLE #EmployeeList;
