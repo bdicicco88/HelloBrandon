@@ -13,8 +13,13 @@ namespace RestSharpAPI.APIClient
         private readonly string _token;
         private  bool _UseBearerToken;
 
-        public APIClient(string baseUrl, string? token = null)
+        public APIClient(string baseUrl, string? token)
         {
+            if (string.IsNullOrEmpty(baseUrl))
+            {
+                throw new ArgumentException($"'{nameof(baseUrl)}' cannot be null or empty.", nameof(baseUrl));
+            }
+
             _client = new RestClient(baseUrl);
 
             if (!String.IsNullOrEmpty(token))
